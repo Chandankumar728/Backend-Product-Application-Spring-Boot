@@ -37,7 +37,7 @@ public class CategoryService {
     }
     //delete category by id
     public String deleteCategoryById(Long id){
-        categoryRepository.deleteById(id);
+        categoryRepository.deleteById(id); 
         return "Category Deleted " + id + " successfully";
     }
 
