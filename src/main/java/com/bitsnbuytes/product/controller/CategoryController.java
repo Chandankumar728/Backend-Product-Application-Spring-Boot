@@ -22,8 +22,12 @@ public class CategoryController {
 
     // create categories
     @PostMapping
-    public CategoryDTO createCategory(@RequestBody CategoryDTO categoryDTO) {
-        return categoryService.createCategory(categoryDTO);
+    public Object createCategory(@RequestBody CategoryDTO categoryDTO) {
+        
+            return categoryService.createCategory(categoryDTO);
+       
+            
+        
     }
 
     // get all category

@@ -18,8 +18,8 @@ public class Product {
     private String name;
     private String description;
     private Double price;
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
 }
