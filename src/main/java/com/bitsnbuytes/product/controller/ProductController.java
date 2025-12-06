@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class ProductController {
     private ProductService productService;
 
     // create products
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     @PostMapping
     public ProductDTO createproduct(@RequestBody ProductDTO productDTO) {
         return productService.createProduct(productDTO);
@@ -45,12 +47,14 @@ public class ProductController {
     }
 
     // update product
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     @PutMapping("/{id}")
     public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
         return productService.updateProduct(id, productDTO);
     }
 
     //delete product 
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
